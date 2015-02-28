@@ -1,5 +1,6 @@
 package br.com.senai.main;
 
+import br.com.senai.classes.Cliente;
 import br.com.senai.classes.Conta;
 
 
@@ -7,65 +8,49 @@ public class Main {
 
 	
 	public static void main(String[] args) {
-		Conta conta1 = new Conta();
-		conta1.conta = "123";
-		conta1.nome = "José Bonifácio";
-		conta1.saldo = 500;
+		Cliente clienteJose = new Cliente();
+		clienteJose.nome = "José Bonifácio";
+		clienteJose.cpf = "08703875644";
+		clienteJose.dataDeNascimento = "27/12/1988";
+		clienteJose.endereco = "Rua Joaquina, 234 Belo Horizonte - MG";
 		
-		System.out.println(conta1.capturarTitular());
-		System.out.println(conta1.capturarSaldo());
+		Conta contaJose = new Conta();
+		contaJose.conta = "123";
+		contaJose.agencia = "345";
+		contaJose.banco = "Bradesco";
+		contaJose.saldo = 500;
+		contaJose.cliente = clienteJose;
 		
-		System.out.println("Depósito de R$ 200,00");
-		conta1.depositar(200.0);
+		Cliente clienteMachado = new Cliente();
+		clienteMachado.nome = "Machado de Assis";
+		clienteMachado.cpf = "08975542278";
+		clienteMachado.dataDeNascimento = "29/03/1980";
+		clienteMachado.endereco = "Rua das Petúnias, 45 Belo Horizonte - MG";
 		
-		System.out.println(conta1.capturarSaldo());
+		Conta contaMachado = new Conta();
+		contaMachado.conta = "456";
+		contaMachado.conta = "876";
+		contaMachado.conta = "Banco do Brasil";
+		contaMachado.saldo = 5000.00;
+		contaMachado.cliente = clienteMachado;
 		
-		System.out.println("Saque de R$ 150,29");
-		if (conta1.sacar(150.49)) {
-			System.out.println("Saque efetuado com sucesso! =)");
-		} else {
-			System.out.println("Não há limite para saque! =(");
-		}
+		contaJose.consultarSaldo();
+		contaJose.depositar(200.0);
+		contaJose.consultarSaldo();
+		contaJose.sacar(150.49);
+		contaJose.consultarSaldo();
+		contaJose.sacar(1500.00);
+		contaJose.consultarSaldo();
+
+		contaMachado.consultarSaldo();
+		contaMachado.transferirPara(contaJose, 1500.0);
+		contaMachado.consultarSaldo();
 		
-		System.out.println(conta1.capturarSaldo());
+		contaJose.consultarSaldo();
+		contaJose.sacar(1500.00);
+		contaJose.consultarSaldo();
 		
-		System.out.println("Saque de R$ 1500,00");
-		if (conta1.sacar(1500.00)) {
-			System.out.println("Saque efetuado com sucesso! =)");
-		} else {
-			System.out.println("Não há limite para saque! =(");
-		}
-		
-		System.out.println(conta1.capturarSaldo());
-		
-		Conta conta2 = new Conta();
-		conta2.nome = "Machado de Assis";
-		conta2.conta = "456";
-		conta2.saldo = 5000.00;
-		
-		System.out.println(conta2.capturarTitular());
-		System.out.println(conta2.capturarSaldo());
-		
-		System.out.println("Transferência de R$ 1500,00");
-		if (conta2.transferirPara(conta1, 1500.0)) {
-			System.out.println("Transferência efetuada com sucesso! =)");
-		} else {
-			System.out.println("Não há limite para transferencia! =(");
-		}
-		
-		System.out.println(conta2.capturarTitular());
-		System.out.println(conta2.capturarSaldo());
-		
-		System.out.println(conta1.capturarTitular());
-		System.out.println(conta1.capturarSaldo());
-		
-		System.out.println("Saque de R$ 1500,00");
-		if (conta1.sacar(1500.00)) {
-			System.out.println("Saque efetuado com sucesso! =)");
-		} else {
-			System.out.println("Não há limite para saque! =(");
-		}
-		System.out.println(conta1.capturarSaldo());
-		
+		contaJose.imprimirExtrato();
+		contaMachado.imprimirExtrato();
 	}
 }
