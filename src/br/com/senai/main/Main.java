@@ -5,7 +5,6 @@ import br.com.senai.classes.Conta;
 
 
 public class Main {
-
 	
 	public static void main(String[] args) {
 		Cliente clienteJose = new Cliente();
@@ -14,12 +13,13 @@ public class Main {
 		clienteJose.dataDeNascimento = "27/12/1988";
 		clienteJose.endereco = "Rua Joaquina, 234 Belo Horizonte - MG";
 		
+		
 		Conta contaJose = new Conta();
-		contaJose.conta = "123";
-		contaJose.agencia = "345";
-		contaJose.banco = "Bradesco";
-		contaJose.saldo = 500;
-		contaJose.cliente = clienteJose;
+		contaJose.setConta("123123123123123");
+		contaJose.setAgencia("345");
+		contaJose.setBanco("Bradesco");
+		contaJose.depositar(500);
+		contaJose.setCliente(clienteJose);
 		
 		Cliente clienteMachado = new Cliente();
 		clienteMachado.nome = "Machado de Assis";
@@ -28,11 +28,11 @@ public class Main {
 		clienteMachado.endereco = "Rua das Petúnias, 45 Belo Horizonte - MG";
 		
 		Conta contaMachado = new Conta();
-		contaMachado.conta = "456";
-		contaMachado.conta = "876";
-		contaMachado.conta = "Banco do Brasil";
-		contaMachado.saldo = 5000.00;
-		contaMachado.cliente = clienteMachado;
+		contaMachado.setConta("12313123");
+		contaMachado.setAgencia("87");
+		contaMachado.setBanco("Banco do Brasil");
+		contaMachado.depositar(5000.00);
+		contaMachado.setCliente(clienteMachado);
 		
 		contaJose.consultarSaldo();
 		contaJose.depositar(200.0);
@@ -52,5 +52,6 @@ public class Main {
 		
 		contaJose.imprimirExtrato();
 		contaMachado.imprimirExtrato();
+		
 	}
 }

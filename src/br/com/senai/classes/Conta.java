@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Conta {
 
-	public String conta;
-	public String agencia;
-	public String banco;
-	public double saldo;
-	public Cliente cliente;
-	public List<Transacao> extrato = new ArrayList<Transacao>();
+	private String conta;
+	private String agencia;
+	private String banco;
+	private double saldo;
+	private Cliente cliente;
+	private List<Transacao> extrato = new ArrayList<Transacao>();
 	
 	public boolean sacar(double valor) {		
 		boolean status;
@@ -57,9 +57,56 @@ public class Conta {
 	
 	public void imprimirExtrato() {
 		this.cliente.imprimirCliente();
+		System.out.println("Conta: " + getConta() + " Agência: " + getAgencia());
+		System.out.println("");
 		for (Transacao transacao : this.extrato) {
 			System.out.println(transacao.capturarTransacao());
 		}
 		System.out.println("");
 	}
+
+	public String getConta() {
+		return conta;
+	}
+
+	public void setConta(String conta) {
+		this.conta = conta;
+	}
+
+	public String getAgencia() {
+		return agencia;
+	}
+
+	public void setAgencia(String agencia) {
+		int digitos = agencia.length();
+		for (int i = 0; i < 4 - digitos; i++) {
+			agencia = "0" + agencia;	
+		}
+		this.agencia = agencia;
+	}
+
+	public String getBanco() {
+		return banco;
+	}
+
+	public void setBanco(String banco) {
+		this.banco = banco;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
+	public List<Transacao> getExtrato() {
+		return extrato;
+	}
+
+	public void setExtrato(List<Transacao> extrato) {
+		this.extrato = extrato;
+	}
+	
 }
